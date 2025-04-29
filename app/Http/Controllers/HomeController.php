@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pessoas;
+use Exception;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,7 @@ class HomeController extends Controller
                 throw new Exception("Usuário não existe", 1);                
             }
             $nome = $usuario->nome;
-            return response()->view("welcome.blade.php", ["nome" => $nome]);
+        return response()->view("welcome", ["nome" => $nome, "scripts" => ["js/reload.js"]]);
         } catch (\Exception $th) {
             return response()->json(["success" => false, "error" => $th]);
         }
@@ -22,8 +23,8 @@ class HomeController extends Controller
 
     public function post() {
         try {
-            Pessoas::create(['nome' => 'Ana']);
-            return response()->view("welcome.blade.php", ["nome" => "Ana"]);
+            $pessoa = Pessoas::create(['nome' => 'Joel']);
+            return response()->view("welcome", ["nome" => $pessoa->nome]);
         } catch (\Exception $th) {
             echo $th;
             return response()->json(["success" => false, "error" => $th]);
