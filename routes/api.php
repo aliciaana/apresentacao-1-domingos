@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/home/{id}', [HomeController::class, 'index']);
-Route::get('/inserir', [HomeController::class, 'post']);
+Route::get('/', [HomeController::class, 'post']);
