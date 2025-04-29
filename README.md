@@ -64,3 +64,37 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## ✅ 1. Criar uma migration
+php artisan make:migration nome_da_migration
+Exemplo:
+php artisan make:migration create_users_table
+
+## ✅ 2. Criar uma rota
+routes/web.php (para rotas web)
+routes/api.php (para rotas de API)
+
+Exemplo de rota web:
+Route::get('/usuarios', [UsuarioController::class, 'index']);
+
+## ✅ 3. Criar um controller
+php artisan make:controller NomeDoController
+Exemplo:
+php artisan make:controller UsuarioController
+Para criar com os métodos resource (index, create, store, show, edit, update, destroy):
+php artisan make:controller UsuarioController --resource
+
+## ✅ 4. Criar um model
+php artisan make:model NomeDoModel
+Exemplo:
+php artisan make:model Usuario
+Para criar já com migration, factory e controller:
+php artisan make:model Usuario -mfc
+
+## ✅ 5. Rodar as migrations
+php artisan migrate
+
+## ✅ 6. Dar rollback nas migrations
+php artisan migrate:rollback
+Para um número específico de passos (ex: 1 passo atrás):
+php artisan migrate:rollback --step=1
